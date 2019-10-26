@@ -1,0 +1,16 @@
+---
+# defaults file for openstack_instance
+
+os_instance_auto_ip: no
+os_instance_volumes: []
+os_instance_floating_ip: 192.168.1.80
+os_instance_terminate_volume: yes
+os_instance_security_groups:
+  - name: default
+    rules:
+      - protocol: icmp
+        remote_ip_prefix: 0.0.0.0/0
+      - protocol: tcp
+        remote_ip_prefix: 0.0.0.0/0
+      - protocol: udp
+        remote_ip_prefix: 0.0.0.0/0

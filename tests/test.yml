@@ -1,0 +1,4 @@
+---
+- hosts: localhost
+  roles:
+    - RedHatGov.openstack_instance
