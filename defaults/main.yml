@@ -1,9 +1,17 @@
 ---
 # defaults file for openstack_instance
 
-os_instance_auto_ip: no
+os_auth: []
+os_instance_name: "os-instance-{{ 9999 | random | to_uuid }}"
+os_instance_image: cirros
+os_instance_flavor: m1.tiny
+os_instance_key_name: current-user
+os_instance_network: private
+os_instance_auto_ip: yes
+#If you would like a specific floating ip
+#set os_instance_auto_ip to no and use var below
+#os_instance_floating_ip: "192.0.2.20"
 os_instance_volumes: []
-os_instance_floating_ip: 192.168.1.80
 os_instance_terminate_volume: yes
 os_instance_security_groups:
   - name: default
