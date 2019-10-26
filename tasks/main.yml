@@ -51,8 +51,7 @@
     security_groups: "{{ os_instance_security_groups | map(attribute='name') | list }}"
     volumes: "{{ os_instance_create_volumes.results | map(attribute='volume.id') | list }}"
     network: "{{ os_instance_network }}"
-    floating_ips: "{{ os_instance_floating_ip | default(omit) }}"
-    #auto_ip: "{{ os_instance_auto_ip | default(omit) }}"
+    auto_ip: "{{ os_instance_auto_ip | default(omit) }}"
     timeout: "{{ os_instance_timeout | default(omit) }}"
     terminate_volume: "{{ os_instance_terminate_volume | default(omit) }}"
     state: present
@@ -60,17 +59,17 @@
     wait: yes
   register: os_instance_launch_instance
 
-#- debug:
-#    msg: "{{ os_instance_launch_instance['server']['private_v4'] }}"
+- debug:
+    msg: "{{ os_instance_launch_instance['server']['private_v4'] }}"
 
-#- name: Associate floating IP
-#  os_floating_ip:
-#   auth: "{{ os_auth | default(omit) }}"
-#   state: present
+- name: Associate floating IP
+  os_floating_ip:
+   auth: "{{ os_auth | default(omit) }}"
+   state: present
    #fixed_address: "{{ os_instance_launch_instance['server']['private_v4'] }}"
    #nat_destination: "{{ os_instance_network }}"
-#   floating_ip_address: "{{ os_instance_floating_ip }}"
-#   server: "{{ os_instance_name }}"
-   #reuse: yes
-   #wait: yes
-#  when: os_instance_floating_ip is defined and (os_instance_auto_ip is defined and not os_instance_auto_ip)
+   floating_ip_address: "{{ os_instance_floating_ip }}"
+   server: "{{ os_instance_name }}"
+  #reuse: yes
+  #wait: yes
+  when: os_instance_floating_ip is defined and (os_instance_auto_ip is defined and not os_instance_auto_ip)
