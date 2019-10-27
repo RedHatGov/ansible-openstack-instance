@@ -38,9 +38,12 @@ Including an example of how to use your role (for instance, with variables passe
 - hosts: localhost
   vars:
     os_auth:
-    auth_url: http://openstack.example.com:5000
-    username: admin
-    password: p@ssw0rd
+      auth_url: http://openstack.example.com:5000
+      username: admin
+      password: p@ssw0rd
+      project_name: demo
+      project_domain_name: default
+      user_domain_name: default
     project_name: myproject
     os_instance_name: myinstance
     os_instance_image: rhel75
