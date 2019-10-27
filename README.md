@@ -35,7 +35,7 @@ Example Playbook
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
 ```yaml
-- hosts: servers
+- hosts: localhost
   vars:
     os_auth:
     auth_url: http://openstack.example.com:5000
@@ -75,7 +75,7 @@ Including an example of how to use your role (for instance, with variables passe
   tasks:
     - name: Create OpenStack Instance
       include_role:
-        name: RedHatGov.kvm-vm
+        name: RedHatGov.openstack_instance
 ```
 
 License
