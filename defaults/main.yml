@@ -1,7 +1,7 @@
 ---
 # defaults file for openstack_instance
 
-os_auth: []
+os_auth: {}
 os_instance_name: "os-instance-{{ 9999 | random | to_uuid }}"
 os_instance_image: cirros
 os_instance_flavor: m1.tiny
